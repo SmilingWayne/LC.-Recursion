@@ -1,0 +1,52 @@
+//欧几里得算法/辗转相除法//
+public static int gcd(int x, int y){
+        return y==0?x:gcd(y,x%y);
+}
+
+
+//斐波那契数列的优化
+    public static long fibonacci(int n){
+        if(n == 0)
+            return 0;
+        if(n ==1)
+            return 1;
+        if(f[n]>0)
+            return f[n];
+        else{
+            f[n] = fibonacci(n-1)+fibonacci(n-2);
+        }
+        return f[n];
+    }
+//如果所求的数字之前计算过，就提前结束了
+
+public static long fibo22(int x){
+        long[] ff = new long[x+1];
+        f[0] =0;
+        f[1] =1;
+        for(int i = 2 ;i < x+1; i++){
+            f[i] = f[i-2]+f[i-1];
+        }
+        return f[x];
+    }
+//斐波那契数列的再次优化，从下向上依次计算，不用进行多余的计算//
+//Longest Common String 最长相似串，提取相同元素进行计算//
+public static int LCScompare(String a, String b){
+        if(a.length() == 0 ||b.length() == 0)
+            return 0;
+        else{
+            if(a.substring(0,1).equals(b.substring(0,1))){
+                return LCScompare(a.substring(1,a.length()),b.substring(1,b.length()))+1;
+            }
+            else{
+                int c = LCScompare(a.substring(1,a.length()),b);
+                int d = LCScompare(a,b.substring(1,b.length()));
+                return Math.max(c,d);
+            }
+        }
+    }
+ //最基本的动态规划思想，先比较开头的元素，如果相同，那么直接计算后面的大小再加上一；如果不相同，直接比较后续数值的最大值是啥//
+ 
+ 
+ 
+
+                
